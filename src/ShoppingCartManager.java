@@ -2,20 +2,34 @@ import java.util.Scanner;
 
 public class ShoppingCartManager {
 
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
     public static char printMenu(ShoppingCart cart) {
-        char choice = 'z';
+        char choice = 'q';
 
-        System.out.println("" +
-                "MENU\n" +
-                "a - Add item to cart\n" +
-                "d - Remove item from cart\n" +
-                "c - Change item quantity\n" +
-                "i - Output items' descriptions\n" +
-                "o - Output shopping cart\n" +
-                "q - Quit\n\n" +
-                "Choose an option:");
+        do {
+            System.out.println("" +
+                    "MENU\n" +
+                    "a - Add item to cart\n" +
+                    "d - Remove item from cart\n" +
+                    "c - Change item quantity\n" +
+                    "i - Output items' descriptions\n" +
+                    "o - Output shopping cart\n" +
+                    "q - Quit\n\n" +
+                    "Choose an option:");
+            choice = scanner.nextLine().charAt(0);
+            if (choice == 'o'){
+                cart.printTotal();
+            }
+            if (choice == 'i'){
+                cart.printDescriptions();
+            }
+            if (choice == 'a'){
+                cart.addItem();
+            }
+
+
+        } while(choice != 'q');
         //choice = scanner.nextLine().charAt();
 
         return choice;
@@ -25,7 +39,7 @@ public class ShoppingCartManager {
         Scanner scanner = new Scanner(System.in);
         ShoppingCart shoppingCart;
         String inputDate = "";
-        String inputName = "";
+        String inputName = "January 1, 2016";
 
         System.out.println("Enter Customer's Name:");
         inputName = scanner.nextLine();
@@ -36,9 +50,9 @@ public class ShoppingCartManager {
         System.out.println("\nCustomer Name: "+inputName);
         System.out.println("Today's Date: "+inputDate);
 
-        shoppingCart = new ShoppingCart(inputDate, inputName);
+        shoppingCart = new ShoppingCart(inputName, inputDate);
 
-        printMenu()
+        printMenu(shoppingCart);
 
 
     }
