@@ -25,7 +25,25 @@ public class ShoppingCartManager {
                 cart.printDescriptions();
             }
             if (choice == 'a'){
-                cart.addItem();
+                ItemToPurchase itemToPurchase;
+                String itemName = "";
+                String itemDescription = "";
+                int itemPrice = 0;
+                int itemQuantity = 0;
+
+                System.out.println("ADD ITEM TO CART");
+                System.out.println("Enter the item name:");
+                itemName = scanner.nextLine();
+                System.out.println("Enter the item description:");
+                itemDescription = scanner.nextLine();
+                System.out.println("Enter the item price:");
+                itemPrice = Integer.parseInt(scanner.nextLine());
+                System.out.println("Enter the item quantity:");
+                itemQuantity = Integer.parseInt(scanner.nextLine());
+
+                itemToPurchase = new ItemToPurchase(itemName, itemDescription, itemPrice, itemQuantity);
+
+                cart.addItem(itemToPurchase);
             }
 
 

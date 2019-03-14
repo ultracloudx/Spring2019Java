@@ -22,9 +22,6 @@ public class ShoppingCart {
     }
 
     public void addItem(ItemToPurchase item) {
-        System.out.println("ADD ITEM TO CART");
-        System.out.println("Enter the item name:");
-
 
         cartItems.add(0, item);
     }
@@ -70,11 +67,15 @@ public class ShoppingCart {
     }
 
     public void printTotal() {
+        int i;
         System.out.println("OUTPUT SHOPPING CART");
         System.out.println(""+getCustomerName()+"'s Shopping Cart - "+getDate());
         if (cartItems.size() > 0){
             System.out.println("Number of items: "+getNumItemsInCart()+"\n");
 
+            for (i = 0; i < cartItems.size(); i++) {
+                //cartItems.printItem COMPLETE DESCRIPTION GET
+            }
 
             System.out.println("Total: "); //ADD IN TOTAL
         } else {
