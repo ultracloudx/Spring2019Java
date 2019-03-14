@@ -77,7 +77,7 @@ public class ShoppingCart {
                 //cartItems.printItem COMPLETE DESCRIPTION GET
             }
 
-            System.out.println("Total: "); //ADD IN TOTAL
+            System.out.println("Total: "); //ADD IN TOTAL TESTING TESTING
         } else {
             System.out.println("SHOPPING CART IS EMPTY");
         }
