@@ -22,13 +22,24 @@ public class ShoppingCartManager {
     }
 
     public static void main(String arg[]) {
-        ShoppingCart shoppingCart = new ShoppingCart();
-        String inputDate;
-        String inputName;
+        Scanner scanner = new Scanner(System.in);
+        ShoppingCart shoppingCart;
+        String inputDate = "";
+        String inputName = "";
 
         System.out.println("Enter Customer's Name:");
+        inputName = scanner.nextLine();
+        System.out.println("Enter Today's Date:");
+        inputDate = scanner.nextLine();
 
 
-        //shoppingCart.getDate();
+        System.out.println("\nCustomer Name: "+inputName);
+        System.out.println("Today's Date: "+inputDate);
+
+        shoppingCart = new ShoppingCart(inputDate, inputName);
+
+        printMenu()
+
+
     }
 }
