@@ -13,7 +13,7 @@ public class ShoppingCartManager {
                 "c - Change item quantity\n" +
                 "i - Output items' descriptions\n" +
                 "o - Output shopping cart\n" +
-                "q - Quit\n\n");
+                "q - Quit\n");
 
         do {
             System.out.println("" /*+
@@ -56,6 +56,13 @@ public class ShoppingCartManager {
 
                 cart.addItem(itemToPurchase);
                 printMenu(cart);
+            }
+            if (choice == 'd') {
+
+                System.out.println("REMOVE ITEM FROM CART:");
+                System.out.println("Enter name of item to remove:");
+                String itemToRemove = scanner.nextLine();
+                cart.removeItem(itemToRemove);
             }
 
 
