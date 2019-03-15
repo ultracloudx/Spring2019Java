@@ -63,6 +63,7 @@ public class ShoppingCart {
         int totalCost = 0;
 
 
+
         return totalCost;
     }
 
@@ -70,14 +71,18 @@ public class ShoppingCart {
         int i;
         System.out.println("OUTPUT SHOPPING CART");
         System.out.println(""+getCustomerName()+"'s Shopping Cart - "+getDate());
+        System.out.println("Number of items: "+getNumItemsInCart()+"\n");
         if (cartItems.size() > 0){
-            System.out.println("Number of items: "+getNumItemsInCart()+"\n");
 
             for (i = 0; i < cartItems.size(); i++) {
-                //cartItems.printItem COMPLETE DESCRIPTION GET
+                cartItems.get(i).printItemCost();
             }
 
-            System.out.println("Total: "); //ADD IN TOTAL
+            int totalCost = 0;
+            for (i = 0; i < cartItems.size(); i++) {
+                totalCost += cartItems.get(i).getPrice();
+            }
+            System.out.println("Total: $"+totalCost);
         } else {
             System.out.println("SHOPPING CART IS EMPTY");
         }
@@ -86,8 +91,15 @@ public class ShoppingCart {
     }
 
     public void printDescriptions() {
+        int i;
+
         System.out.println("OUTPUT ITEMS' DESCRIPTIONS");
-        System.out.println(""+getCustomerName()+"'s Shopping Cart - "+getDate());
+        System.out.println(""+getCustomerName()+"'s Shopping Cart - "+getDate()+"\n");
+
+        System.out.println("Item Descriptions");
+        for (i = 0; i < cartItems.size(); i++) {
+            cartItems.get(i).printItemDescription();
+        }
 
 
     }

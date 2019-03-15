@@ -6,10 +6,18 @@ public class ShoppingCartManager {
 
     public static char printMenu(ShoppingCart cart) {
         char choice = 'q';
+        /*System.out.println("" +
+                "\nMENU\n" +
+                "a - Add item to cart\n" +
+                "d - Remove item from cart\n" +
+                "c - Change item quantity\n" +
+                "i - Output items' descriptions\n" +
+                "o - Output shopping cart\n" +
+                "q - Quit\n\n");*/
 
         do {
             System.out.println("" +
-                    "MENU\n" +
+                    "\nMENU\n" +
                     "a - Add item to cart\n" +
                     "d - Remove item from cart\n" +
                     "c - Change item quantity\n" +
@@ -45,6 +53,10 @@ public class ShoppingCartManager {
 
                 cart.addItem(itemToPurchase);
             }
+            else {
+                System.out.println("Choose an option:");
+                choice = scanner.nextLine().charAt(0);
+            }
 
 
         } while(choice != 'q');
@@ -55,9 +67,9 @@ public class ShoppingCartManager {
 
     public static void main(String arg[]) {
         Scanner scanner = new Scanner(System.in);
-        ShoppingCart shoppingCart;
         String inputDate = "";
         String inputName = "January 1, 2016";
+        ShoppingCart shoppingCart = new ShoppingCart(inputName, inputDate);
 
         System.out.println("Enter Customer's Name:");
         inputName = scanner.nextLine();
@@ -67,8 +79,6 @@ public class ShoppingCartManager {
 
         System.out.println("\nCustomer Name: "+inputName);
         System.out.println("Today's Date: "+inputDate);
-
-        shoppingCart = new ShoppingCart(inputName, inputDate);
 
         printMenu(shoppingCart);
 
