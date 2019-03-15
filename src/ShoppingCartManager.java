@@ -6,31 +6,34 @@ public class ShoppingCartManager {
 
     public static char printMenu(ShoppingCart cart) {
         char choice = 'q';
-        /*System.out.println("" +
+        System.out.println("" +
                 "\nMENU\n" +
                 "a - Add item to cart\n" +
                 "d - Remove item from cart\n" +
                 "c - Change item quantity\n" +
                 "i - Output items' descriptions\n" +
                 "o - Output shopping cart\n" +
-                "q - Quit\n\n");*/
+                "q - Quit\n\n");
 
         do {
-            System.out.println("" +
+            System.out.println("" /*+
                     "\nMENU\n" +
                     "a - Add item to cart\n" +
                     "d - Remove item from cart\n" +
                     "c - Change item quantity\n" +
                     "i - Output items' descriptions\n" +
                     "o - Output shopping cart\n" +
-                    "q - Quit\n\n" +
+                    "q - Quit\n\n"*/ +
                     "Choose an option:");
             choice = scanner.nextLine().charAt(0);
             if (choice == 'o'){
                 cart.printTotal();
+                printMenu(cart);
             }
             if (choice == 'i'){
                 cart.printDescriptions();
+                printMenu(cart);
+
             }
             if (choice == 'a'){
                 ItemToPurchase itemToPurchase;
@@ -52,11 +55,9 @@ public class ShoppingCartManager {
                 itemToPurchase = new ItemToPurchase(itemName, itemDescription, itemPrice, itemQuantity);
 
                 cart.addItem(itemToPurchase);
+                printMenu(cart);
             }
-            else {
-                System.out.println("Choose an option:");
-                choice = scanner.nextLine().charAt(0);
-            }
+
 
 
         } while(choice != 'q');
