@@ -86,6 +86,8 @@ public class ShoppingCart {
             System.out.println("Total: $"+getCostOfCart());
         } else {
             System.out.println("SHOPPING CART IS EMPTY");
+
+            System.out.println("Total: $"+getCostOfCart());
         }
 
 

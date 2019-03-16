@@ -103,6 +103,7 @@ public class ShoppingCartManager {
                     itemToPurchase = new ItemToPurchase(itemName, itemDescription, itemPrice, itemQuantity);
 
                     cart.addItem(itemToPurchase);
+                    printMenu(cart);
 
                     break;
                 case 'd':
@@ -110,18 +111,21 @@ public class ShoppingCartManager {
                     System.out.println("Enter name of item to remove:");
                     String itemToRemove = scanner.nextLine();
                     cart.removeItem(itemToRemove);
+                    printMenu(cart);
 
                     break;
                 case 'c':
 
+                    printMenu(cart);
                     break;
                 case 'i':
                     cart.printDescriptions();
+                    printMenu(cart);
 
                     break;
                 case 'o':
                     cart.printTotal();
-
+                    printMenu(cart);
 
                     break;
                 default:
@@ -147,6 +151,7 @@ public class ShoppingCartManager {
 
         System.out.println("\nCustomer Name: "+inputName);
         System.out.println("Today's Date: "+inputDate);
+        shoppingCart = new ShoppingCart(inputName, inputDate);
 
         //printMenu(shoppingCart);
         getInput(shoppingCart);
