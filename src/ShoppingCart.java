@@ -34,27 +34,36 @@ public class ShoppingCart {
 
     public void removeItem(String item) {
         int i;
+        boolean found = false;
 
         for (i = 0; i < cartItems.size(); i++) {
             if (cartItems.get(i).getName().equals(item)) {
                 cartItems.remove(i);
+                found = true;
                 break;
-            } else if (cartItems.get((cartItems.size()-1)).getName().equals(item) == false){
-                System.out.println("Item not found in cart. Nothing removed."); //FIXME
             }
+
         }
+        if (found == false) {
+            System.out.println("Item not found in cart. Nothing removed.");
+        }
+
     }
 
     public void modifyItem(ItemToPurchase item) {
         int i;
+        boolean found = false;
 
         for (i = 0; i < cartItems.size(); i++) {
             if (cartItems.get(i).getName().equals(item.getName())) {
                 int tempVal = item.getQuantity();
                 cartItems.get(i).setQuantity(tempVal);
-            } else {
-                System.out.println("Item not found in cart. Nothing modified.");
+                found = true;
+                break;
             }
+        }
+        if (found == false) {
+            System.out.println("Item not found in cart. Nothing modified.");
         }
 
     }
@@ -85,12 +94,13 @@ public class ShoppingCart {
         int i;
         System.out.println("OUTPUT SHOPPING CART");
         System.out.println(""+getCustomerName()+"\'s Shopping Cart - "+getDate());
-        System.out.println("Number of Items: "+getNumItemsInCart());
+        System.out.println("Number of Items: "+getNumItemsInCart()+"\n");
         if (cartItems.size() > 0){
 
             for (i = 0; i < cartItems.size(); i++) {
                 cartItems.get(i).printItemCost();
-            }
+
+            }System.out.println();
 
             System.out.println("Total: $"+getCostOfCart());
         } else {
