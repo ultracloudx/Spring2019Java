@@ -75,79 +75,84 @@ public class ShoppingCartManager {
 
     public static void getInput(ShoppingCart cart) {
         printMenu(cart);
-        char choice;
+        String choice="";
 
         do {
             System.out.println("Choose an option:");
-            choice = scanner.nextLine().charAt(0);
-            if (choice == 'q')break;
-            switch (choice)
-            {
-                case 'a':
-                    ItemToPurchase itemToPurchase;
-                    String itemName = "";
-                    String itemDescription = "";
-                    int itemPrice = 0;
-                    int itemQuantity = 0;
+            choice = scanner.nextLine()/*.charAt(0)*/;
+            if (choice.equals("q"))break;
+            if (choice != null) {
+                switch (choice) {
+                    case "a":
+                        ItemToPurchase itemToPurchase;
+                        String itemName = "";
+                        String itemDescription = "";
+                        int itemPrice = 0;
+                        int itemQuantity = 0;
 
-                    System.out.println("ADD ITEM TO CART");
-                    System.out.println("Enter the item name:");
-                    itemName = scanner.nextLine();
-                    System.out.println("Enter the item description:");
-                    itemDescription = scanner.nextLine();
-                    System.out.println("Enter the item price:");
-                    itemPrice = Integer.parseInt(scanner.nextLine());
-                    System.out.println("Enter the item quantity:");
-                    itemQuantity = Integer.parseInt(scanner.nextLine());
+                        System.out.println("ADD ITEM TO CART");
+                        System.out.println("Enter the item name:");
+                        itemName = scanner.nextLine();
+                        System.out.println("Enter the item description:");
+                        itemDescription = scanner.nextLine();
+                        System.out.println("Enter the item price:");
+                        itemPrice = Integer.parseInt(scanner.nextLine());
+                        System.out.println("Enter the item quantity:");
+                        itemQuantity = Integer.parseInt(scanner.nextLine());
 
-                    itemToPurchase = new ItemToPurchase(itemName, itemDescription, itemPrice, itemQuantity);
+                        itemToPurchase = new ItemToPurchase(itemName, itemDescription, itemPrice, itemQuantity);
 
-                    cart.addItem(itemToPurchase);
-                    printMenu(cart);
+                        cart.addItem(itemToPurchase);
+                        printMenu(cart);
 
-                    break;
-                case 'd':
-                    System.out.println("REMOVE ITEM FROM CART:");
-                    System.out.println("Enter name of item to remove:");
-                    String itemToRemove = scanner.nextLine();
-                    cart.removeItem(itemToRemove);
-                    printMenu(cart);
+                        break;
+                    case "d":
+                        System.out.println("REMOVE ITEM FROM CART");
+                        System.out.println("Enter name of item to remove:");
+                        String itemToRemove = scanner.nextLine();
+                        cart.removeItem(itemToRemove);
+                        printMenu(cart);
 
-                    break;
-                case 'c':
+                        break;
+                    case "c":
+                        System.out.println("CHANGE ITEM QUANTITY");
+                        System.out.println("Enter the item name:");
+                        String itemToModify = scanner.nextLine();
+                        System.out.println("Enter the new quantity:");
+                        int itemQuantityToModify = Integer.parseInt(scanner.nextLine());
 
-                    printMenu(cart);
-                    break;
-                case 'i':
-                    cart.printDescriptions();
-                    printMenu(cart);
+                        ItemToPurchase itemToPurchase1 = new ItemToPurchase(itemToModify, "", 0,itemQuantityToModify);
+                        cart.modifyItem(itemToPurchase1);
 
-                    break;
-                case 'o':
-                    cart.printTotal();
-                    printMenu(cart);
+                        printMenu(cart);
+                        break;
+                    case "i":
+                        cart.printDescriptions();
+                        printMenu(cart);
 
-                    break;
-                default:
-                    System.out.println("Choose an option:");
-                    choice = scanner.nextLine().charAt(0);
-                    break;
+                        break;
+                    case "o":
+                        cart.printTotal();
+                        printMenu(cart);
+
+                        break;
+                    default:
+                        break;
+                }
             }
-        } while (choice != 'q');
+        } while (choice != "q");
 
     }
 
     public static void main(String arg[]) {
-        Scanner scanner = new Scanner(System.in);
         String inputDate = "";
         String inputName = "January 1, 2016";
-        ShoppingCart shoppingCart = new ShoppingCart(inputName, inputDate);
+        ShoppingCart shoppingCart;
 
         System.out.println("Enter Customer's Name:");
         inputName = scanner.nextLine();
         System.out.println("Enter Today's Date:");
         inputDate = scanner.nextLine();
-
 
         System.out.println("\nCustomer Name: "+inputName);
         System.out.println("Today's Date: "+inputDate);

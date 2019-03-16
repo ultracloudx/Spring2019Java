@@ -7,7 +7,11 @@ public class ShoppingCart {
     private String currentDate;
     private ArrayList<ItemToPurchase> cartItems;
 
-    public ShoppingCart() {}
+    public ShoppingCart() {
+        this.customerName = "none";
+        this.currentDate = "January 1, 2016";
+        this.cartItems = new ArrayList<ItemToPurchase>();
+    }
 
     public ShoppingCart(String customerName, String currentDate) {
         this.customerName = customerName;
@@ -35,8 +39,8 @@ public class ShoppingCart {
             if (cartItems.get(i).getName().equals(item)) {
                 cartItems.remove(i);
                 break;
-            } else {
-                System.out.println("Item not found in car. Nothing removed"); //FIXME
+            } else if (cartItems.get((cartItems.size()-1)).getName().equals(item) == false){
+                System.out.println("Item not found in cart. Nothing removed."); //FIXME
             }
         }
     }
@@ -45,8 +49,9 @@ public class ShoppingCart {
         int i;
 
         for (i = 0; i < cartItems.size(); i++) {
-            if (cartItems.get(i).equals(item)) {
-
+            if (cartItems.get(i).getName().equals(item.getName())) {
+                int tempVal = item.getQuantity();
+                cartItems.get(i).setQuantity(tempVal);
             } else {
                 System.out.println("Item not found in cart. Nothing modified.");
             }
@@ -55,17 +60,21 @@ public class ShoppingCart {
     }
 
     public int getNumItemsInCart() {
-        int total = 0;
-        total = cartItems.size();
+        int i;
+        int totalItems = 0;
+        for (i = 0; i < cartItems.size(); i++){
+            totalItems += (cartItems.get(i).getQuantity());
+        }
 
-        return total;
+
+        return totalItems;
     }
 
     public int getCostOfCart() {
         int i;
         int totalCost = 0;
         for (i = 0; i < cartItems.size(); i++) {
-            totalCost += (cartItems.get(i).getPrice()*cartItems.get(i).getPrice());
+            totalCost += (cartItems.get(i).getPrice()*cartItems.get(i).getQuantity());
         }
 
 
@@ -76,7 +85,7 @@ public class ShoppingCart {
         int i;
         System.out.println("OUTPUT SHOPPING CART");
         System.out.println(""+getCustomerName()+"\'s Shopping Cart - "+getDate());
-        System.out.println("Number of items: "+getNumItemsInCart()+"\n");
+        System.out.println("Number of Items: "+getNumItemsInCart());
         if (cartItems.size() > 0){
 
             for (i = 0; i < cartItems.size(); i++) {
@@ -87,7 +96,7 @@ public class ShoppingCart {
         } else {
             System.out.println("SHOPPING CART IS EMPTY");
 
-            System.out.println("Total: $"+getCostOfCart());
+            System.out.println("\nTotal: $"+getCostOfCart());
         }
 
 
