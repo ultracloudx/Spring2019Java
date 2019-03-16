@@ -7,6 +7,8 @@ public class ShoppingCart {
     private String currentDate;
     private ArrayList<ItemToPurchase> cartItems;
 
+    public ShoppingCart() {}
+
     public ShoppingCart(String customerName, String currentDate) {
         this.customerName = customerName;
         this.currentDate = currentDate;
