@@ -49,7 +49,12 @@ public class DataVisualizer {
         }
 
         // printing of charts
-        System.out.printf("%33s\n", tableTitle);//
+        System.out.printf("%33s\n", tableTitle);
+        System.out.printf("%-20s|", tableColumn1);
+        System.out.printf("%23s\n", tableColumn2);
+        System.out.println("--------------------------------------------");
+
+
 
 
 
