@@ -6,6 +6,6 @@ public class Main {
 
         System.out.println(one+"\n");
         System.out.println(two+"\n");
-        System.out.println(three);
+        System.out.println(three);//
     }
 }
